@@ -18,7 +18,7 @@ const PermissionHooks = NativeModules.PermissionHooks
       }
     );
 
-export * from './useBluetoothScanPermission';
+export * from './useBluetoothPermission';
 export * from './useCameraPermission';
 export * from './useLocationPermission';
 export * from './useStoragePermission';

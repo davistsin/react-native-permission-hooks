@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { useBluetoothScanPermission } from 'react-native-permission-hooks';
+import { useBluetoothPermission } from 'react-native-permission-hooks';
 
 export default function App() {
-  const { status: bluetoothScanStatus, request: requestBluetoothPer } =
-    useBluetoothScanPermission();
+  const { status: bluetoothPerStatus, request: requestBluetoothPer } =
+    useBluetoothPermission();
 
   return (
     <View style={styles.container}>
-      <Text>{`Bluetooth Scan permission: ${bluetoothScanStatus}`}</Text>
+      <Text>{`Bluetooth permission: ${bluetoothPerStatus}`}</Text>
       <Button
-        title="request bluetooth scan permission"
+        title="request bluetooth permission"
         onPress={() => {
           requestBluetoothPer();
         }}

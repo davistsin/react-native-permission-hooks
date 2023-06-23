@@ -16,12 +16,12 @@ npm install react-native-permissions
 
 ## Usage
 
-### Bluetooth Scan Permission
+### Bluetooth Permission
 
 ```jsx
 export default function App() {
   const { status: bluetoothScanStatus, request: requestBluetoothPer } =
-    useBluetoothScanPermission();
+    useBluetoothPermission();
 
   return (
     <View style={styles.container}>
@@ -40,8 +40,8 @@ export default function App() {
 #### Android Intro
 
 - Android <6: return default GRANTED.
-- Android 6-11: check android.permission.ACCESS_FINE_LOCATION permission.
-- Android >12: check android.permission.BLUETOOTH_SCAN permission.
+- Android 6-11: check android.permission.ACCESS_FINE_LOCATION permission, in order to scan.
+- Android >=12: check android.permission.BLUETOOTH_SCAN, android.permission.BLUETOOTH_ADVERTISE, android.permission.BLUETOOTH_CONNECT permissions.
 
 The following permissions need to be added to the manifest file.
 
@@ -50,12 +50,20 @@ The following permissions need to be added to the manifest file.
   <uses-permission android:name="android.permission.BLUETOOTH"/>
   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
   <uses-permission android:name="android.permission.BLUETOOTH_SCAN"/>
+  <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+  <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+  <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 </manifest>
 ```
 
-#### TODO iOS Intro
+#### iOS Intro
 
+- return default GRANTED.
+
+Unlike Android, iOS only needs Bluetooth permissions to perform all Bluetooth functions: open/scan/connect.
 
 ### TODO Camera Permission
 ### TODO Location Permission
