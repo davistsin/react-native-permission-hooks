@@ -35,6 +35,10 @@ function initState() {
         : ReactNativePermissions.RESULTS.DENIED;
     }
   } else if (Platform.OS === 'ios') {
+    const hasPer = PermissionHooks.checkBluetoothPermission();
+    return hasPer === 'true'
+      ? ReactNativePermissions.RESULTS.GRANTED
+      : ReactNativePermissions.RESULTS.DENIED;
   }
   return ReactNativePermissions.RESULTS.GRANTED;
 }
@@ -83,6 +87,12 @@ export function useBluetoothPermission() {
         setStatus(result);
         return result;
       }
+    } else if (Platform.OS === 'ios') {
+      const per = await ReactNativePermissions.request(
+        ReactNativePermissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL
+      );
+      setStatus(per);
+      return per;
     }
     return ReactNativePermissions.RESULTS.GRANTED;
   };

@@ -20,14 +20,14 @@ npm install react-native-permissions
 
 ```jsx
 export default function App() {
-  const { status: bluetoothScanStatus, request: requestBluetoothPer } =
+  const { status: bluetoothPerStatus, request: requestBluetoothPer } =
     useBluetoothPermission();
 
   return (
     <View style={styles.container}>
-      <Text>{`Bluetooth Scan permission: ${bluetoothScanStatus}`}</Text>
+      <Text>{`Bluetooth permission: ${bluetoothPerStatus}`}</Text>
       <Button
-        title="request bluetooth scan permission"
+        title="request bluetooth permission"
         onPress={() => {
           requestBluetoothPer();
         }}
@@ -61,9 +61,24 @@ The following permissions need to be added to the manifest file.
 
 #### iOS Intro
 
-- return default GRANTED.
-
 Unlike Android, iOS only needs Bluetooth permissions to perform all Bluetooth functions: open/scan/connect.
+
+In your Info.plist, add
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<dict>
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>Need open bluetooth</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Need open bluetooth</string>
+</dict>
+```
+
+And import CoreBluetooth.framework. "Target" -> "General" -> "Frameworks, Libraries, and Embedded Content" -> + CoreBluetooth.framework -> "Embed & Sign"
+
+
+
 
 ### TODO Camera Permission
 ### TODO Location Permission

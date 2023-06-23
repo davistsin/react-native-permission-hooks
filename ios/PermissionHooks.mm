@@ -1,18 +1,27 @@
 #import "PermissionHooks.h"
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @implementation PermissionHooks
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(double)a withB:(double)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(checkBluetoothPermission)
 {
-    NSNumber *result = @(a * b);
-
-    resolve(result);
+    bool hasPer = false;
+    if (@available(iOS 13.1, *)) {
+        CBManagerAuthorization status = [CBManager authorization];
+        if (status == CBManagerAuthorizationAllowedAlways) {
+            hasPer = true;
+        }
+    } else if (@available(iOS 13.0, *)) {
+        CBCentralManager *centralManager = [[CBCentralManager alloc] init];
+        CBManagerAuthorization status = [centralManager authorization];
+        if (status == CBManagerAuthorizationAllowedAlways) {
+            hasPer = true;
+        }
+    } else {
+        hasPer = true;
+    }
+    return @(hasPer);
 }
 
 // Don't compile this code when we build for the old architecture.

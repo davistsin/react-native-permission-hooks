@@ -374,7 +374,7 @@ PODS:
   - React-jsinspector (0.72.0)
   - React-logger (0.72.0):
     - glog
-  - react-native-permission-hooks (0.1.0):
+  - react-native-permission-hooks (0.1.3):
     - React-Core
   - React-NativeModulesApple (0.72.0):
     - hermes-engine
@@ -696,7 +696,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 990287d74aedc4fdd08ebd80736b1a5c71b54da2
   React-jsinspector: 8d754fc957255a29d93e52fc67a895045cdc8703
   React-logger: 454ffb01980778a43b0153ee98721d0275b56616
-  react-native-permission-hooks: 700ffa491b1979a81139d33f940605036291de34
+  react-native-permission-hooks: 8f8b99efa3896a586a5dd971365cd46a50df9a06
   React-NativeModulesApple: 038cd625999ff352fc13d11fd335ea7509794599
   React-perflogger: 684a11499a0589cc42135d6d5cc04d0e4e0e261a
   React-RCTActionSheet: 00b0a4c382a13b834124fa3f541a7d8d1d56efb9

@@ -13,7 +13,9 @@ export default function App() {
       <Button
         title="request bluetooth permission"
         onPress={() => {
-          requestBluetoothPer();
+          requestBluetoothPer().then((result) => {
+            console.log('requestBluetoothPer', result);
+          });
         }}
       />
     </View>
