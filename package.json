@@ -72,6 +72,7 @@
     "react": "18.2.0",
     "react-native": "0.72.0",
     "react-native-builder-bob": "^0.20.4",
+    "react-native-permissions": "^3.8.0",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2"
   },
@@ -158,8 +159,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "react-native-permissions": "^3.8.0"
   }
 }
